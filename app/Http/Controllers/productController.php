@@ -31,6 +31,10 @@ class productController extends Controller
                 ->get();
         }
 
+        foreach ($data as $elem) {
+            $elem->colors = unserialize($elem->colors);
+        }
+
         if ($data->isEmpty()) {
             return response()->json([
                 'Error' => $data
@@ -46,11 +50,14 @@ class productController extends Controller
     {
 
         try {
+            $db = DB::table('products')
+                ->where('id', '=', $id)
+                ->where('isPublished', '=', 1)
+                ->get()[0];
+            $db->colors = unserialize($db->colors);
+
             return response()->json([
-                'products' => DB::table('products')
-                    ->where('id', '=', $id)
-                    ->where('isPublished', '=', 1)
-                    ->get()[0]
+                'products' => $db
             ]);
         } catch (Throwable $e) {
             return response()->json([
