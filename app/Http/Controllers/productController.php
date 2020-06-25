@@ -30,13 +30,13 @@ class productController extends Controller
                 ->get();
         }
 
-        if ($data->isNotEmpty()) {
+        if ($data->isEmpty()) {
             return response()->json([
-                'products' => $data
+                'error' => $data
             ], 204);
         } else {
             return response()->json([
-                'error' => $data
+                'products' => $data
             ], 200);
         }
     }
