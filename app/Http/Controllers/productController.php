@@ -37,7 +37,7 @@ class productController extends Controller
             ], 200);
         } else {
             return response()->json([
-                'products' => unserialize($data)
+                'products' => $data
             ], 200);
         }
     }
