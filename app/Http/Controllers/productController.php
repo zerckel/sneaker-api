@@ -30,7 +30,7 @@ class productController extends Controller
                 ->get();
         }
 
-        if ($data->isEmpty()) {
+        if ($data->isNotEmpty()) {
             return response()->json([
                 'products' => $data
             ], 204);
