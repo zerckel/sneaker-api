@@ -24,6 +24,7 @@ class productController extends Controller
                 ["isPublished", "=", 1]
             ])->get();
 
+
         } else {
 
             $data = DB::table('products')
@@ -32,8 +33,8 @@ class productController extends Controller
 
         if ($data->isEmpty()) {
             return response()->json([
-                'error' => $data
-            ], 204);
+                'Error' => $data
+            ], 200);
         } else {
             return response()->json([
                 'products' => $data
@@ -41,7 +42,8 @@ class productController extends Controller
         }
     }
 
-    public function getOne($id){
+    public function getOne($id)
+    {
 
         try {
             return response()->json([
@@ -53,6 +55,7 @@ class productController extends Controller
         } catch (Throwable $e) {
             return response()->json([
                 "error" => 'ID  not found'
-            ], 404);        }
+            ], 404);
+        }
     }
 }
