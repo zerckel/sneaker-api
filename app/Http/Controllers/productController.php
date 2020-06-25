@@ -33,11 +33,11 @@ class productController extends Controller
 
         if ($data->isEmpty()) {
             return response()->json([
-                'Error' => unserialize($data)
+                'Error' => $data
             ], 200);
         } else {
             return response()->json([
-                'products' => $data
+                'products' => unserialize($data)
             ], 200);
         }
     }
