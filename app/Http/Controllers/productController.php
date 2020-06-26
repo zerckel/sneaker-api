@@ -33,6 +33,7 @@ class productController extends Controller
 
         foreach ($data as $elem) {
             $elem->colors = unserialize($elem->colors);
+            $elem->secondarypics = unserialize($elem->secondarypics);
         }
 
         if ($data->isEmpty()) {
@@ -55,6 +56,7 @@ class productController extends Controller
                 ->where('isPublished', '=', 1)
                 ->get()[0];
             $db->colors = unserialize($db->colors);
+            $db->secondarypics = unserialize($db->secondarypics );
 
             return response()->json([
                 'products' => $db
