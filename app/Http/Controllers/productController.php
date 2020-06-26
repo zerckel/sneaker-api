@@ -14,6 +14,7 @@ class productController extends Controller
         if (isset($_GET['sort']) && $_GET['sort'] === "random" && isset($_GET['max'])) {
 
             $data = DB::table('products')
+                ->where('isPublished', '=', 1)
                 ->get()->take($_GET['max']);
 
 
@@ -28,6 +29,7 @@ class productController extends Controller
         } else {
 
             $data = DB::table('products')
+                ->where('isPublished', '=', 1)
                 ->get();
         }
 
