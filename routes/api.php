@@ -20,4 +20,4 @@ Route::get('products', 'productController@index');
 Route::get('products/{id}', 'productController@getOne');
 Route::get('news', 'newsController@index');
 Route::get('news/{id}', 'newsController@getOne');
-Route::post('contact', 'newsController@send');
+Route::post('contact', 'mailController@send');
