@@ -51,6 +51,11 @@ class BrandController extends Controller
                 ->where('isPublished', '=', '1')
                 ->get();
 
+            foreach ($res as $elem) {
+                $elem->colors = unserialize($elem->colors);
+                $elem->secondarypics = unserialize($elem->secondarypics);
+            }
+
             if ($res->isNotEmpty()) {
                 return response()->json([
                     'products' => $res
